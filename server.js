@@ -3,12 +3,19 @@ var http = require('http'),
     url = require('url'),
     fs = require('fs'),
     port = 4040,
-    encoding = 'utf8';
+    encoding = 'utf8',
+    keys;
 
 var options = {
     key: fs.readFileSync('ssl/privateKey.key'),
     cert: fs.readFileSync('ssl/certificate.crt')
 };
+
+var p = readJSON('keys/keys.json', encoding);
+
+p.then(function(data) {
+    keys = data;
+})
 
 https.createServer(options, function(req, res) {
 
@@ -32,19 +39,16 @@ https.createServer(options, function(req, res) {
         res.end('hello world')
     } else if (q.pathname === '/api/weather') {
 
-        var key = '6530eb43b4ecafb19e33eb5ceba35c35',
-            params = '?exclude=[minutely,hourly,daily]',
+        var params = '?exclude=[minutely,hourly,daily]',
             units = '?units=[us]';
 
-        options.path = '/forecast/' + key + '/' + q.query.lat + ',' + q.query.lon + params + units;
+        options.path = '/forecast/' + keys.darksky + '/' + q.query.lat + ',' + q.query.lon + params + units;
         options.hostname = 'api.darksky.net';
 
     } else if (q.pathname === '/api/city') {
 
-        var key = 'AIzaSyCHU4cOVInRIL9jfrJnHj9Wu0GqTRcGmBc';
-
         options.hostname = 'maps.googleapis.com';
-        options.path = '/maps/api/geocode/json?latlng=' + q.query.lat + ',' + q.query.lon + '&key=' + key;
+        options.path = '/maps/api/geocode/json?latlng=' + q.query.lat + ',' + q.query.lon + '&key=' + keys.google;
 
     } else {
 
@@ -109,5 +113,17 @@ function proxyReqHTTPS(options) {
 
         req.end();
 
+    })
+}
+
+function readJSON(file, encoding) {
+    return new Promise(function (resolve, reject) {
+        fs.readFile(file, encoding, function (err, fileContents) {
+            if (err) reject(err);
+            else {
+                var obj = JSON.parse(fileContents);
+                resolve(obj);
+            }
+        });
     })
 }

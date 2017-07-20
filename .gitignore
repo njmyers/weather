@@ -1,7 +1,7 @@
 #
 
 ssl/
-
+keys/
 scripts/
 
 # ignore sass files
