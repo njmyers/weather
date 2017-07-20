@@ -1,6 +1,6 @@
 # Weather App
 
-This app was originally built using callbacks and jQuery with JSONP requests for a project from FreeCodeCamp.com. 
+This app was originally built using callbacks and jQuery with JSONP requests for a project from [FreeCodeCamp.com](http://freecodecamp.com)
 
 I expanded the scope of the project so that I could build it using more advanced ES6 asynch techniques. It now uses a secure node.js proxy server for requesting the data from the darksky and google APIs which then is forwarded as JSON to the client browser. All async function are handled using manual ES6 promises to demonstrate promise functionality.
 
