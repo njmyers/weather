@@ -7,4 +7,4 @@ promises/scripts/*
 
 # ignore sass files
 *.css.map
-/.sass-cache
+promises/style/.sass-cache
