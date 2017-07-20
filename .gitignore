@@ -1,0 +1,10 @@
+#
+
+ssl/*
+
+promises/scripts/*
+
+
+# ignore sass files
+*.css.map
+/.sass-cache
