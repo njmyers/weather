@@ -13,13 +13,12 @@ I tried to minimize the usage of libraries (most notable lack of a promise libra
 3. jQuery with JSONP (for requesting from secure resources)
 
 ## Promises Version
-### Techniques
+### Client Script
 1. HTML
 2. Vue.js
 3. Sass
 4. Native ES6 Promises (XMLHttpRequest)
 
-## Proxy Server
-### Techniques
+### Proxy Server
 1. Node.js
 2. Native ES6 Promises
