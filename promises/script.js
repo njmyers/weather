@@ -9,7 +9,7 @@ var weather = (function() {
     var interval = {
         t: 1000,
         s: 60,
-        m: 5,
+        m: 15,
         i: function() {
             return this.t * this.s * this.m
         }
@@ -196,7 +196,7 @@ var weather = (function() {
 
     controlFlow();
 
-    // my.interval = setInterval(controlFlow, interval.i());
+    my.interval = setInterval(controlFlow, interval.i());
 
     return my
 
