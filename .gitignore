@@ -1,10 +1,9 @@
 #
 
-ssl/*
+ssl/
 
-promises/scripts/*
-
+scripts/
 
 # ignore sass files
 *.css.map
-promises/style/.sass-cache
+.sass-cache/
